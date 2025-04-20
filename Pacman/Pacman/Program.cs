@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Pacman
 {
@@ -16,12 +17,21 @@ namespace Pacman
             char[,] map = ReadMAp("map.txt");
             ConsoleKeyInfo pressedKey = new ConsoleKeyInfo('w', ConsoleKey.W, false, false, false);
 
+            Task.Run(() =>  //аааа нууу ии хуета
+            {
+                while (true)
+                    pressedKey = Console.ReadKey();
+            });
+
             int pacmanX = 1, pacmanY = 1;
             int score = 0;
 
             while (true)
             {
                 Console.Clear();
+
+                HandleInput(pressedKey, ref pacmanX, ref pacmanY, map, ref score);
+
                 Console.ForegroundColor = ConsoleColor.Blue;
                 DrawMap(map);
 
@@ -33,9 +43,8 @@ namespace Pacman
                 Console.SetCursorPosition(35, 0);
                 Console.Write($"Score: {score}");
 
-                pressedKey = Console.ReadKey();
+                Thread.Sleep(1000);
 
-                HandleInput(pressedKey, ref pacmanX, ref pacmanY, map, ref score);
             }
         }
 
@@ -126,5 +135,6 @@ namespace Pacman
             return maxLength;
 
         }
+
     }
 }
