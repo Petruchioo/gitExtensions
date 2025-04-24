@@ -51,7 +51,7 @@ namespace Обучение_.NET_Visual_Studio
             {
                 Client newClient = _clients.Dequeue(); //клиент стоящий первый в очереди
                 Console.WriteLine($"Баланс кклуба: {_money} руб. Ждем нового клиента");
-                Console.WriteLine($"У вас новый клиент и он хочет купить {newClient.DesiredMinutes} минут (его баланс )");
+                Console.WriteLine($"У вас новый клиент и он хочет купить {newClient.DesiredMinutes} минут (его баланс {Client.Money} )");
                 ShowAllComputersState();
 
                 Console.Write("\nВы предлагаете ПК по дномером: ");
@@ -168,13 +168,13 @@ namespace Обучение_.NET_Visual_Studio
 
     class Client
     {
-        private int _money;
         private int _moneyToPay;
+        public int Money { get; private set; }
         public int DesiredMinutes { get; private set; } //желаемые минуты
 
         public Client(int money, Random random) //рандом нкжен для случайно  генерации жедаемых минут 
         {
-            _money = money;
+            Money = money;
             DesiredMinutes = random.Next(10, 30);
 
         }
@@ -182,7 +182,7 @@ namespace Обучение_.NET_Visual_Studio
         public bool CheckSolMoney(Computer computer)
         {
             _moneyToPay = DesiredMinutes * computer.PricePerMinute;
-            if (_money >= _moneyToPay)
+            if (Money >= _moneyToPay)
                 return true;
             else
             {
@@ -193,7 +193,7 @@ namespace Обучение_.NET_Visual_Studio
 
         public int Pay()
         {
-            _money -= _moneyToPay;
+            Money -= _moneyToPay;
             return _moneyToPay;
         }
     }
