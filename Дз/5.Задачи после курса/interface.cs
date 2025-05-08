@@ -19,14 +19,10 @@ namespace Обучение_.Net
             var constantReader = new ConstantReader();
             var consoleReader = new ConsoleReader();
 
-            //var constantParser = new IntegerParser(new ConstantReader());
-            //int constantResult = constantParser.Parse();
-
-            //var consoleParser = new IntegerParser(new ConsoleReader());
-            //int consoleResult = consoleParser.Parse();
-
             var integerParser = new IntegerParser(constantReader).Parse();
+            Console.WriteLine(integerParser);
             var integerParser2 = new IntegerParser(consoleReader).Parse();
+            Console.WriteLine(integerParser2);
         }
 
         interface IInputReader
