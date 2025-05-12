@@ -25,7 +25,7 @@ namespace Обучение_.Net
             var el2 = new B();
             map[el1] = "12";
             map[el2] = "14";
-            Console.WriteLine(map[el1]);
+            Console.WriteLine(map[el1]); // выдет 12
         }
 
         class B
@@ -39,5 +39,24 @@ namespace Обучение_.Net
                 return obj is B b && b._id == _id;
             }
         }
+
+        //изначальный код
+        //static void Main(string[] args)
+        //{
+        //    Dictionary<B, string> map = new Dictionary<B, string>();
+        //    var el1 = new B();
+        //    var el2 = new B();
+        //    map[el1] = "12";
+        //    map[el2] = "14";
+        //    Console.WriteLine(map[el1]); // выдает ошибку отсутсвия ключа в словаре
+        //}
+
+        //class B
+        //{
+        //    private readonly Random _random = new Random();
+        //    public override int GetHashCode() => _random.Next(); // получаем новый рандомный хэш для элемента при каждом вызове GetHashCode
+                                                                   // из за чего словарь не может найти необходимый элемент
+        //    public override bool Equals(object obj) => true;     //не может всегда быть true тк нарушает логику сравнения
+        //}
     }
 }

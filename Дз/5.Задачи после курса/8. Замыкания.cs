@@ -34,6 +34,7 @@ namespace Обучение_.Net
 
             Console.WriteLine(new String('-', 10) + "Разделение заданий" + new String('-', 10));
 
+            //это не другое задание это таже вторая часть задания с исправлением но другим методом(как мне кажентся корявым)
             //var funcs = new List<Func<int, int>>();
             //for (int j = 0; j < 10; j++)
             //{
@@ -46,7 +47,7 @@ namespace Обучение_.Net
             //}
 
             var funcs = new List<Func<int, int>>();
-            for (int j = 0; j < 10; j++)
+            for (int j = 0; j < 10; j++) // компилятор ругался на i я уже не помню на что именно, но сменил i на j тк по сути это ничего не менят
             {
                 int temp = j;
                 funcs.Add(x => x + temp);

@@ -31,10 +31,10 @@ namespace Обучение_.Net
                 };
 
 
-            Console.WriteLine($"Людей с именем Юрий: {persons.Count(name => name.FirstName.Contains("Юрий"))}\n");
+            Console.WriteLine($"Людей с именем Юрий: {persons.Count(person => person.FirstName.Contains("Юрий"))}\n");
 
-            var fullName = persons.Select(player => $"{player.FirstName} {player.LastName}").ToList();
-            Console.WriteLine($"Имя фамилия \n{string.Join("\n", fullName)}\n");
+            var fullName = persons.Select(person => $"{person.FirstName} {person.LastName}").ToList(); //я сам ниебу что за palyer тут был, мб просто поплыл уже
+            Console.WriteLine($"Имя фамилия \n{string.Join("\n", fullName)}\n"); //string.Join для обьединения элементов коллекции в строку для вывода, это чтобы не писать foreach
 
             Console.WriteLine($"Средний возраст людей: {persons.Average(person => person.Age)} \n");
 

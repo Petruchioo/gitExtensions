@@ -24,7 +24,11 @@ namespace Обучение_.Net
             var el1 = new A { Value = 1 };
             var el2 = new A { Value = 1 };
             @set.Add(el1);
-            Console.WriteLine(@set.Contains(el2));
+            Console.WriteLine(@set.Contains(el2)); //забыл оставить коммит, ранее выводилось false, потому что
+                                                   //значение обьектов одно а ссылки разные и сравнивались именно ссылки
+                                                   //теперь true
+                                                   //после исправлениея в class A
+                                                   // а именно переопределение метода Equals
         }
 
         class A
@@ -37,9 +41,10 @@ namespace Обучение_.Net
                 return Value;
             }
 
-            public override bool Equals(object obj)
+            public override bool Equals(object obj) //еще есть вариант смены class A на struct A
+                                                    //в этом случае у нас меняется ссылочный тип данных на значимый
             {
-                Console.WriteLine("Equals");  
+                Console.WriteLine("Equals");
                 return obj is A a && a.Value == Value;
             }
         }

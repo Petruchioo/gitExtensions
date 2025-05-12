@@ -42,7 +42,7 @@ namespace Обучение_.Net
         {
             public string ReaderFromSource()
             {
-                return Console.ReadLine();
+                return Console.ReadLine(); //андрей говорил лишнюю логику не добавлять (в первых двух задачах я этим пренебрег)
             }
         }
 

@@ -54,7 +54,7 @@ namespace Обучение_.Net
         {
             public override void Run()
             {
-                Console.WriteLine(" I am running for tasty rabbit ;)");
+                Console.WriteLine(" I am running for tasty rabbit ;)"); // это смайлик в конце)
             }
         }
     }
