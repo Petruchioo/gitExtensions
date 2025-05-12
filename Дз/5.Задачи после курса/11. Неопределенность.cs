@@ -32,8 +32,8 @@ namespace Обучение_.Net
         {
             private static readonly Random _rnd = new Random(Guid.NewGuid().GetHashCode());
             private readonly int _id = _rnd.Next();
-            public override int GetHashCode() => _id; //не может быть рандомным тк нарушает базовый контрат(хз что значит)
-                                                          // получаем случайный хэш код только один раз а не при кадом вызове GetHashCode
+            public override int GetHashCode() => _id;  // получаем случайный хэш код только один раз а не при кадом вызове GetHashCode
+
             public override bool Equals(object obj) //не может всегда быть true тк нарушает логику сравнения
             {
                 return obj is B b && b._id == _id;
@@ -53,8 +53,9 @@ namespace Обучение_.Net
 
         //class B
         //{
-        //    private readonly Random _random = new Random();
-        //    public override int GetHashCode() => _random.Next(); // получаем новый рандомный хэш для элемента при каждом вызове GetHashCode
+        //    private readonly Random _random = new Random();       
+        //    public override int GetHashCode() => _random.Next(); //не может быть рандомным тк нарушает базовый контрат(для каждого элемента должен быть один постоянный хэш)
+                                                                   // получаем новый рандомный хэш для элемента при каждом вызове GetHashCode
                                                                    // из за чего словарь не может найти необходимый элемент
         //    public override bool Equals(object obj) => true;     //не может всегда быть true тк нарушает логику сравнения
         //}
