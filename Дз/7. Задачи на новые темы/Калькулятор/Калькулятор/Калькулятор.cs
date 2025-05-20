@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Reflection;
 using static System.Net.WebRequestMethods;
 
+
 namespace Обучение_.Net
 {
     internal class Program
@@ -24,26 +25,55 @@ namespace Обучение_.Net
             double operand2;
             string operation;
 
-            string input = Console.ReadLine();
-            var nonEmptyInput = input.Split(' ').Where(i => !string.IsNullOrEmpty(input)).ToArray();
-            operand1 = double.Parse(nonEmptyInput[0]);
-            operand2 = double.Parse(nonEmptyInput[2]);
-            operation = nonEmptyInput[1];
-
-            switch (operation)
-            {
-                case "+":
-                    Console.WriteLine(Sum(operand1, operand2));
-                    break;
-
-            }
-            
             bool workСalculator = true;
+
+            
+            
             while (workСalculator)
             {
                 Instruction();
 
-                Console.ReadKey();
+                string input = Console.ReadLine();
+                
+                if (input == "Exit")
+                {
+                    workСalculator = false;
+                    break;
+                }
+
+                if (input == "Help")
+                {
+                    Instruction();
+                }
+                else
+                {
+                    var nonEmptyInput = input.Split(' ').Where(i => !string.IsNullOrEmpty(input)).ToArray();
+                    operand1 = double.Parse(nonEmptyInput[0]);
+                    operand2 = double.Parse(nonEmptyInput[2]);
+                    operation = nonEmptyInput[1];
+
+                    switch (operation)
+                    {
+                        case "+":
+                            Console.WriteLine(Sum(operand1, operand2));
+                            break;
+                        case "*":
+                            Console.WriteLine(Multiplication(operand1, operand2));
+                            break;
+                        case "-":
+                            Console.WriteLine(Subtraction(operand1, operand2));
+                            break;
+                        case "/":
+                            Console.WriteLine(Divide(operand1, operand2));
+                            break;
+                        case "%":
+                            Console.WriteLine(Modulo(operand1, operand2));
+                            break;
+                        case "^":
+                            Console.WriteLine(RaisingPower(operand1, operand2));
+                            break;
+                    }
+                }
             }
             
             void Instruction() 
@@ -63,35 +93,35 @@ namespace Обучение_.Net
             {
                 operand1 = multiplier1;
                 operand2 = multiplier2;
-                return 0;
+                return multiplier1 * multiplier2;
             }
 
             double Subtraction(double minuend, double subtrahend) // функция вычитания
             {
                 operand1 = minuend;
                 operand2 = subtrahend;
-                return 0;
+                return minuend - subtrahend;
             }
 
             double Divide(double dividend, double divider) //функция деления
             {
                 operand1 = dividend;
                 operand2 = divider;
-                return 0;
+                return dividend / divider;
             }
 
             double Modulo(double dividend, double divider) //функция остатка от деления
             {
                 operand1 = dividend;
                 operand2 = divider;
-                return 0;
+                return dividend % divider;
             }
 
             double RaisingPower(double operand, double power) //функция возведения в степень
             {
                 operand1 = operand;
                 operand2 = power;
-                return 0;
+                return Math.Pow(operand, power);
             } 
         }
     }
