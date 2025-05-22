@@ -18,7 +18,7 @@ using System.Collections;
 
 namespace Обучение_.Net
 {
-    internal class Program
+    internal class Program1
     {
         static void Main(string[] args)
         {
